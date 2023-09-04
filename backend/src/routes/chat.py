@@ -18,10 +18,6 @@ router = APIRouter(
     responses={404: {"description": "Not found"}}
 )
 
-@router.get("/")
-async def get_chat():
-    return { "message" : "Sou chat!" }
-
 @router.post("/")
 async def chat(prompt: Prompt):
      
