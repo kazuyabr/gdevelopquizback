@@ -27,7 +27,7 @@ async def historiadinamica(prompt: Prompt):
      
     print(prompt.msg)   
         
-    if prompt.msg == "":
+    if prompt.msg in ["", 0]:
         user_msg = "Comece uma história e só escreva o seu primeiro paragrafo!"
     else:
         user_msg = prompt.msg
@@ -36,7 +36,7 @@ async def historiadinamica(prompt: Prompt):
     historiadinamicagpt = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=[
-           {"role": "system", "content": "Continue a história a partir das palavras enviadas pelo cliente."},
+           {"role": "system", "content": "Continue a história de forma direta e sem adicionar diálogos."},
 
             {"role": "system", "content": 'Quando a mensagem enviada contiver texto superior a 5 palavras interprete como história que deve ser continuada a partir do fim desta mensagem'},
 
@@ -63,7 +63,7 @@ async def historiadinamica(prompt: Prompt):
     
     result = destacarfrases.choices[0].message.content
     
-    return {"response": result}
+    return {"result" : result}
     # result_json = json.loads(result)
     
     # return { "response" : result_json }
