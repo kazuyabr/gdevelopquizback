@@ -36,13 +36,13 @@ async def historiadinamica(prompt: Prompt):
     historiadinamicagpt = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=[
-           {"role": "system", "content": "Continue a história de forma direta e sem adicionar diálogos."},
+            {"role": "system", "content": "Conte a história de forma direta e sem adicionar diálogos."},
 
             {"role": "system", "content": 'Quando a mensagem enviada contiver texto superior a 5 palavras interprete como história que deve ser continuada a partir do fim desta mensagem'},
 
             {"role": "system", "content": 'Enterprete o texto que sera continuado para que a continuação de mais sentido ao estilo de história que esta sendo contada com base no tipo dela (ação, aventura, drama, comédia, terror ...)'},
 
-            {"role": "system", "content": 'Gere apenas um paragrafo.'},
+            {"role": "system", "content": 'Gere apenas um paragrafo de no maximo 5 linhas.'},
             
             {"role": "user", "content": user_msg}
             
@@ -55,7 +55,8 @@ async def historiadinamica(prompt: Prompt):
         model="gpt-3.5-turbo",
         messages=[
             {"role": "system", "content": "Encontre pelo menos duas palavras ou mais no texto que se forem mudadas, afetariam todo o contexto da história e destaque-as usando # no inicio e no fim da palavra para ficar facilmente visivel no paragrafo! (exemplo: #palavraasermudada#"},
-            {"role": "system", "content": "O isolamento deve ocorrer dentro da história sem qualquer alteração a não ser a adição dos #. (exemplo: Era uma vez joaninha que #sentiu# muito #frio#) neste exemplo o texto sera copiado e atualizado pelo usuario e reenviado de novo mas de maneira conveniente sem mudar o texto completo apenas as palavras destacadas!"},
+            {"role": "system", "content": "Não omita o texto original"},
+            {"role": "system", "content": "O isolamento deve ocorrer dentro do texto sem qualquer alteração a não ser a adição dos #. (modelo a ser seguido: Era uma vez joaninha que #sentiu# muito #frio#) neste exemplo o texto sera copiado e atualizado pelo usuario e reenviado de novo mas de maneira conveniente sem mudar o texto completo apenas as palavras destacadas!"},
             {"role": "user", "content": paragrafo}
             
         ]
