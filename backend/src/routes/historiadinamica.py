@@ -95,9 +95,9 @@ async def historiadinamica_continue(prompt: Prompt):
                 messages=[
                     {"role": "system", "content": "Conte a história de forma direta e sem adicionar diálogos."},
 
-                    {"role": "system", "content": 'Quando a mensagem enviada contiver texto superior a 5 palavras interprete como história que deve ser continuada a partir do fim desta mensagem'},
-
-                    {"role": "system", "content": 'Enterprete o texto que sera continuado para que a continuação de mais sentido ao estilo de história que esta sendo contada com base no tipo dela (ação, aventura, drama, comédia, terror ...)'},
+                    {"role": "system", "content": 'Continue a história a partir de onde o texto parou.'},
+                    
+                    {"role": "system", "content": 'Enterprete o texto base e de um tom mais aprofundado para empolgar o leitor.'},
 
                     {"role": "system", "content": 'Gere apenas um paragrafo de no maximo 5 linhas.'},
                     
