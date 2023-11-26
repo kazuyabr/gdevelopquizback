@@ -42,8 +42,13 @@ async def forca():
                     {"role": "system", "content": "Respeite sempre o formato {'dica': '', 'palavra': ['']} pois o que esta em branco pode variar"},
                     {"role": "system", "content": "A dica e a palavra precisam estar coerentes e dizer quantas letras a palavra tem."},
                     {"role": "system", "content": "Na palavra nunca use acentos nem caracteres especiais, nem numeros, só letras e caso haja letras com acentos como ç ou á por exemplo apenas tire o acento por exemplo ç se tornará c e á se tornará a."},
-                    {"role": "system", "content": "Coloque as letras da palavra cada um em uma posição do array. exemplo: ['S', 'O', 'L']"},
-                    {"role": "system", "content": "obrigatorio manter coerencia entre dica e palavra."},
+                    {"role": "system", "content": "É obrigatório colocar as letras da palavra cada um em uma posição do array sempre. exemplo: ['S', 'O', 'L']"},
+                    {"role": "system", "content": "É obrigatorio a palavra não ter acentuações."},
+                    {"role": "system", "content": "É obrigatorio manter coerencia entre dica e palavra."},
+                    {"role": "system", "content": 'exemplo errado: {"dica": "Esporte coletivo", "palavra": "Futebol"}'},
+                    {"role": "system", "content": 'exemplo correto: {"dica": "Esporte coletivo", "palavra": ["F", "U", "T", "E", "B", "O","L"]}'},
+                    {"role": "system", "content": 'exemplo errado: {"dica":"Animal da selva","palavra":["L","E","O"]} o que está errado aqui é que foi omitido a letra Ã por conta do acento, mas o certo é exibir a letra sem acento ou seja A'},
+                    {"role": "system", "content": 'exemplo correto: {"dica":"Animal da selva","palavra":["L","E", "A","O"]}'},
                     {"role": "system", "content": "Diversifique."}
                 ]
             )
