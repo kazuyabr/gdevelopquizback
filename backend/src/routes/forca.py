@@ -19,6 +19,14 @@ router = APIRouter(
 )
 
 
+# Função para remover acentos e caracteres especiais
+def normalizar(texto):
+    # Normalizar para o formato NFC (Forma Normalizada de Composição)
+    texto_normalizado = unicodedata.normalize('NFKD', texto)
+    #Remove espaços
+    texto_normalizado = ''.join(c for c in texto_normalizado if unicodedata.category(c) != 'Mn' and c.isalnum())
+    return texto_normalizado.encode('ASCII', 'ignore').decode('utf-8')
+
 @router.get("/")
 async def forca():
     
@@ -55,10 +63,9 @@ async def forca():
             
             forca = forca.choices[0].message.content
             result = json.loads(forca)
+            result["palavra"] = [normalizar(string) for string in result["palavra"]]
             
             print(result)
-            # result.palavra = [unicodedata.normalize('NFD', letra).encode('ascii', 'ignore').decode('utf-8') for letra in result.palavra]
-            
             
             return result
         except openai.APIError as e:
